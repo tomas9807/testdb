@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Editar Persona </h3>
+
+
+
+<form {% if id_editar is not defined %} 
+
+action= "{{url_for('editar')}}" 
+method="post"
+{% else %} 
+
+action= "{{url_for('editar',pk=id_editar,confirm=True  )  }}"
+method="post"
+{% endif %}   novalidate>
+ {{ form.hidden_tag() }}
+{% if id_editar is not defined %}
+ 
+        {{ render_field(form.lista) }}
+        {{ form.submit(class="btn btn-primary")|safe }}
+ 
+{% else %}
+{{ render_field(form.nombre) }}
+{{ render_field(form.apellido) }}
+{{ render_field(form.biografia) }}
+
+{{ form.submit(class="btn btn-primary")|safe }}
+
+
+{% endif %}
+
+</form>
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Eliminar Persona </h3>
+
+
+
+<form action= "{{url_for('eliminar')}}" method="post" novalidate>
+ {{ form.hidden_tag() }}
+
+ 
+    {{ render_field(form.lista) }}
+    {{ form.submit(class="btn btn-primary")|safe }}
+
+
+
+</form>
+
+
+{% endblock content %}
